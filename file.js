@@ -1,13 +1,25 @@
 const fs = require('fs')
-const iconv = require('iconv-lite')
 
 var file = {
-    transformFileCoding: function (fileName, formCoding, toCoding) {
-        console.log('transformFileCoding')
-    },
-    transformDirCoding: function (dirName, formCoding, toCoding, filters) {
-        console.log('transformDirCoding')
-    }
+  toUTF8_Dir: function (dirName, fromCoding, toCoding, filters) {
+    var files = fs.readdirSync(dirName)
+    files.forEach(function (file) {
+      var pathName = dirName + '/' + file
+      var status = fs.lstatSync(pathName)
+
+      console.log(pathName)
+
+      var buf = '\uFEFF' + fs.readFileSync(pathName)
+
+      if(!status.isDirectory()) {
+        fs.writeFile(pathName, buf, toCoding, function (err) {
+          if (err) throw err
+        })
+      } else {
+        transformDirCoding(pathName)
+      }
+    })
+  }
 } 
 
 module.exports = file
