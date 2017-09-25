@@ -1,0 +1,23 @@
+{
+  "name": "ks-node-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tools.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackycjs/ks-node-tools.git"
+  },
+  "author": "jackycjs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackycjs/ks-node-tools/issues"
+  },
+  "homepage": "https://github.com/jackycjs/ks-node-tools#readme",
+  "dependencies": {
+    "encoding": "^0.1.12",
+    "iconv-lite": "^0.4.19"
+  }
+}
