@@ -1,3 +1,4 @@
+const iconv = require('iconv-lite')
 const fs = require('fs')
 
 var file = {
@@ -7,12 +8,11 @@ var file = {
       var pathName = dirName + '/' + file
       var status = fs.lstatSync(pathName)
 
+      var buf = fs.readFileSync(pathName)
       console.log(pathName)
 
-      var buf = '\uFEFF' + fs.readFileSync(pathName)
-
       if(!status.isDirectory()) {
-        fs.writeFile(pathName, buf, toCoding, function (err) {
+        fs.writeFile(pathName, iconv.decode(buf, fromCoding), toCoding, function (err) {
           if (err) throw err
         })
       } else {
