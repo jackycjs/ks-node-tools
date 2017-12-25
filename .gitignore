@@ -58,4 +58,4 @@ typings/
 .env
 
 # My Repo
-test
+test*
